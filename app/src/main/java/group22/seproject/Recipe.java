@@ -18,14 +18,12 @@ public class Recipe {
     private double averageRating;
     private int totalVotes;
     private double totalRating;
-    private ArrayList<String> instruct = new ArrayList<String>();   //TEST VARIABLES
-    private ArrayList<Ingredient> ingreTest = new ArrayList<Ingredient>();
 
-    public Recipe(String recipeName, double totalcalories, double duration) throws Exception {
+    public Recipe(String recipeName, ArrayList<Ingredient> ingreds, ArrayList<String> instructs, double totalcalories, double duration) throws Exception {
 
         name = recipeName;
-        this.instructions = instruct;
-        this.ingredients = ingreTest;
+        this.instructions = instructs;
+        this.ingredients = ingreds;
         this.totalcalories = totalcalories;
         this.duration = duration;
         averageRating = 0;
@@ -33,13 +31,12 @@ public class Recipe {
         totalRating = 0;
     }
 
-    public static void main(String[] args) throws Exception {       //can be moved later. generates recipe.
-        //Recipe recipe = new Recipe();
-
-    }
-
     public ArrayList<String> getInstructions() {
         return instructions;
+    }
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
     public double getTotalcalories() {

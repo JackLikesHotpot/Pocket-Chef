@@ -7,5 +7,11 @@ public class Admin extends RegisteredUser {
     }
 
 
-    // BILLY'S GIT TEST
+    public boolean verifyReview(Review review) {
+        return true;
+    }
+
+    public boolean approveRecipe(Recipe recipe) {
+        return true;
+    }
 }
