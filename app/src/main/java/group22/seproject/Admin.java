@@ -4,6 +4,6 @@ public class Admin extends RegisteredUser {
 
     public Admin(String userName, String password, String email){
         super(userName, password, email);
-        System.out.println("SUCCESS");
+        System.out.println("");
     }
 }
