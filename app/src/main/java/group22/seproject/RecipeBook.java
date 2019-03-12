@@ -1,6 +1,7 @@
 package group22.seproject;
 
 import java.util.ArrayList;
+import java.io.*;
 
 
 public class RecipeBook {
@@ -9,7 +10,41 @@ public class RecipeBook {
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     private ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
 
-    private RecipeBook() {
+    private RecipeBook() throws IOException {
+
+        // CODE TO LOOK THROUGH ALL FILES IN DATABASE (FOLDER) AND EXTRACT ALL RECIPES/INGREDIENTS AND INIT OBJECTSt
+
+        BufferedReader inputStream;
+        String recipeName = "";
+        double recipeDuration = 0;
+        double recipeCalories = 0;
+        ArrayList<String> ingredients = new ArrayList<String>();
+        ArrayList<String> instructions = new ArrayList<String>();
+
+        File dir = new File("../../../../../sampledata/recipes"); // direcotry for all recipes
+        File[] dirListing = dir.listFiles();
+        if(dirListing != null) {
+            for(File recipeFile : dirListing) {
+
+                // COLLECT EACH FILE DATA, CREATE NEW OBJECTS, ADD TO RECIPEBOOK, ETC
+                inputStream = new BufferedReader(new FileReader(recipeFile)); // inputStream for current Recipe file
+                recipeName = inputStream.readLine();
+                recipeDuration = Double.parseDouble(inputStream.readLine());
+                recipeCalories = Double.parseDouble(inputStream.readLine());
+
+
+
+
+
+
+                inputStream.close();
+
+            }
+        }
+
+        else {
+            // HANDLE CASE WHERE IT IS NOT A DIRECTORY
+        }
     }
 
     public static RecipeBook getInstance() {
