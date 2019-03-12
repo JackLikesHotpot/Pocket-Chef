@@ -61,8 +61,6 @@ public class readCreateRecipe {
 
         catch (IOException ex) {
             System.out.println("IO error");
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

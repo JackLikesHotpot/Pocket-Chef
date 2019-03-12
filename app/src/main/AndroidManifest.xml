@@ -22,7 +22,7 @@
             android:name=".SearchResults"
             android:label="results">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
 
@@ -31,6 +31,14 @@
             android:label="recipe page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LoginRegister"
+            android:label="login register">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
             </intent-filter>
         </activity>
     </application>
