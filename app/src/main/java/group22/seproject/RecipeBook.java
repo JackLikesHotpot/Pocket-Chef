@@ -47,7 +47,7 @@ public class RecipeBook {
         }
     }
 
-    public static RecipeBook getInstance() {
+    public static RecipeBook getInstance() throws IOException {
         if (instance == null) {
             instance = new RecipeBook();
         }
