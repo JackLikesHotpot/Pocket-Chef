@@ -29,7 +29,7 @@ public class LoginRegister extends Activity {
             public void onClick(View v) {
                 Intent login = new Intent(LoginRegister.this, SearchResults.class);
                 login.putExtra("username", usernameInput.getText().toString()); //information from box
-                login.putExtra("password", passwordInput.getText().toString());
+                login.putExtra("password", passwordInput.getText().toString()); //password
 
                 //startActivity(resultsScreen); //Check login details
             }
