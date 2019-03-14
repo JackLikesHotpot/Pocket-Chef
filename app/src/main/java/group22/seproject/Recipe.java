@@ -19,16 +19,16 @@ public class Recipe {
     private int totalVotes;
     private double totalRating;
 
-    public Recipe(String recipeName, ArrayList<Ingredient> ingreds, ArrayList<String> instructs, double totalcalories, double duration) throws Exception {
+    public Recipe(String recipeName, ArrayList<Ingredient> ingreds, ArrayList<String> instructs, double totalcalories, double duration) {
 
-        name = recipeName;
+        this.name = recipeName;
         this.instructions = instructs;
         this.ingredients = ingreds;
         this.totalcalories = totalcalories;
         this.duration = duration;
-        averageRating = 0;
-        totalVotes = 0;
-        totalRating = 0;
+        this.averageRating = 0;
+        this.totalVotes = 0;
+        this.totalRating = 0;
     }
 
     public ArrayList<String> getInstructions() {

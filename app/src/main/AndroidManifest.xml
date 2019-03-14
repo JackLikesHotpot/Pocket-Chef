@@ -34,13 +34,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".LoginRegister"
-            android:label="login register">
-            <intent-filter>
-                <action android:name="android.intent.action.GET_CONTENT"/>
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
