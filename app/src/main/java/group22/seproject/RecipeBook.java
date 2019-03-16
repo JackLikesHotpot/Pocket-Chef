@@ -1,10 +1,13 @@
 package group22.seproject;
 
+import android.app.Activity;
+import android.content.res.AssetManager;
+
 import java.util.ArrayList;
 import java.io.*;
 
 
-public class RecipeBook {
+public class RecipeBook extends Activity {
 
     private static RecipeBook instance = null;
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
@@ -12,8 +15,45 @@ public class RecipeBook {
 
     private RecipeBook() {
 
+        // I/O METHOD
+        File dir = new File("../../../../../sampledata/recipes"); // direcotry for all recipes
+        File[] dirListing = dir.listFiles();
+        if (dirListing != null) {
+            for (File recipeFile : dirListing) {
+                try {
+                    FileInputStream fis = openFileInput(recipeFile.getName());
+                    int charBit;
+                    String temp = "";
+                    int n = 0;
+                    while ((charBit = fis.read()) != -1) {
+                        temp = temp + Character.toString((char) charBit);
+                    }
+                    String[] firstSplit = temp.split("£");
+                    while (n < firstSplit.length) {
+                        firstSplit[n] = firstSplit[n].substring(0, firstSplit[n].length() - 1); //how recipes will look, reviews sep by another char
+                        System.out.println(firstSplit[n]);
+                        n++;
+                    }
+                } catch (FileNotFoundException f) {
+                    System.out.println("File not found");
+                } catch (IOException e) {
+                    System.out.println("I/O Error occurred");
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
         // CODE TO LOOK THROUGH ALL FILES IN DATABASE (FOLDER) AND EXTRACT ALL RECIPES/INGREDIENTS AND INIT OBJECTSt
-        try {
+        /*try {
 
             String recipeName = "";
             double recipeDuration = 0;
@@ -23,8 +63,14 @@ public class RecipeBook {
             String line;
             int lineNumber;
             int blankline;
-            FileReader fileReader;
+
+
+            FileInputStream fis;
             BufferedReader bufferedReader;
+
+
+            AssetManager assetManager = getAssets(); String[] files = assetManager.list("");
+
             ArrayList<Ingredient> tempIngrHolder;
             ArrayList<String> instructions;
 
@@ -40,8 +86,10 @@ public class RecipeBook {
                     lineNumber = 1;
                     blankline = 0;
 
-                    fileReader = new FileReader(recipeFile);
-                    bufferedReader = new BufferedReader(fileReader);
+                    fis = new FileInputStream(recipeFile);
+                    bufferedReader = new BufferedReader(fis);
+
+
                     tempIngrHolder = new ArrayList<Ingredient>(); // temporary holder that after going through file, is passed to Recipe constructor
                     instructions = new ArrayList<String>();
 
@@ -85,7 +133,7 @@ public class RecipeBook {
             }
         } catch (IOException e) {
             System.out.println("ERROR");
-        }
+        }*/
     }
 
 
@@ -151,4 +199,12 @@ public class RecipeBook {
         }
         return false;
     }
+
+    public static void main (String[] args) {
+        // TODO: GET THE RECIPEBOOK TO READ THE FILES...
+
+
+    }
+
+
 }
