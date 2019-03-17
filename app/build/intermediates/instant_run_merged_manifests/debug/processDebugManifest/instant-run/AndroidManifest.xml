@@ -43,9 +43,9 @@
         </activity>
         <activity
             android:name="group22.seproject.LoginRegister"
-            android:label="login register" >
+            android:label="login and register" >
             <intent-filter>
-                <action android:name="android.intent.action.GET_CONTENT" />
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 

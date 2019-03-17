@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Youssef\\Desktop\\aaa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sk\\values-sk.xml",
+            "outputFile": "C:\\Users\\Jack Li\\AndroidStudioProjects\\aaa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sk\\values-sk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Youssef\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\3185bbee25a5c166646a50eb0def4b83\\res\\values-sk\\values-sk.xml",
+                    "source": "C:\\Users\\Jack Li\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d43e2c0218a3668a50c13449188478db\\res\\values-sk\\values-sk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Youssef\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\455b5847eb129a25c1a71276b7aa790a\\res\\values-sk\\values-sk.xml",
+                    "source": "C:\\Users\\Jack Li\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\691eca43a598ffbb0842bdd524a616bc\\res\\values-sk\\values-sk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

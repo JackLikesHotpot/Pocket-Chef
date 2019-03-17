@@ -1,5 +1,6 @@
 package group22.seproject;
 
+import java.io.File;
 import java.sql.Time;
 import java.util.Calendar;
 
@@ -8,11 +9,8 @@ public class Reminder {
     private Time time;
 
     public Reminder(Calendar date, Time time) {
-        this.startDate = date;
+        startDate = date;
         this.time = time;
-
-
-
     }
 
     public void sendNotification() {

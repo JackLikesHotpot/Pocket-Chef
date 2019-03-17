@@ -31,6 +31,13 @@ public class Recipe {
         this.totalRating = 0;
     }
 
+/*
+    public static void main(String[] args) {
+        File f = new File(System.getProperty("user.dir") + "/app/sampledata/users.txt");
+        System.out.println(f.exists());
+        System.out.println("Current working directory: " + System.getProperty("user.dir"));
+    }
+*/
     public ArrayList<String> getInstructions() {
         return instructions;
     }
