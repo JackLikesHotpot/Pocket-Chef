@@ -1,6 +1,7 @@
 package group22.seproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,8 @@ public class Register extends Activity {
                 if (checked == true) {
                     try {
                         registerDetails(username, password);
+                        Intent login = new Intent(Register.this, LoginRegister.class);
+                        startActivity(login);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

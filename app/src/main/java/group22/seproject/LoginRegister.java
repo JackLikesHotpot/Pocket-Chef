@@ -21,14 +21,13 @@ import java.util.ArrayList;
 public class LoginRegister extends Activity {
     String username = "";
     String password = "";
-    boolean loginTry = false;
-    Context context = getBaseContext();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button loginButton = findViewById(R.id.bLogin);
         Button registerButton = findViewById(R.id.tvRegisterLink);
+        Button unregisterLogin = findViewById(R.id.tvUnregisteredUser);
         final EditText usernameInput = findViewById(R.id.etUsername);
         final EditText passwordInput = findViewById(R.id.etPassword);
 
@@ -36,15 +35,17 @@ public class LoginRegister extends Activity {
             public void onClick(View v) {
                 username = usernameInput.getText().toString();
                 password = passwordInput.getText().toString();
+                String[] userDetails = new String[3];
                 try {
-                    loginTry = loginCheck(username, password);
-                    if (loginTry == true) {
-                        Toast toast = Toast.makeText(LoginRegister.this,"Redirecting to search...", Toast.LENGTH_SHORT);
+                    userDetails = loginCheck(username, password);
+                    if (userDetails[3] == "True") {
+                        Toast toast = Toast.makeText(LoginRegister.this, "Success! Redirecting to search page...", Toast.LENGTH_SHORT);
                         toast.show();
-                        Intent login = new Intent(LoginRegister.this, SearchActivity.class);
-                        startActivity(login);
+                        Intent search = new Intent(LoginRegister.this, SearchActivity.class);
+                        search.putExtra("account", userDetails);
+                        startActivity(search);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -55,11 +56,20 @@ public class LoginRegister extends Activity {
                 startActivity(register);
             }
         });
+
+        unregisterLogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String[] userDetails = {"","","U","True"};
+                Intent search = new Intent(LoginRegister.this, SearchActivity.class);
+                search.putExtra("account", userDetails);
+                startActivity(search);
+            }
+        });
     }
 
-    private boolean loginCheck(String username, String password) throws IOException {
-        boolean returnLogin = false;
-        boolean correctDetails = false;
+    private String[] loginCheck(String username, String password) throws IOException {
+        String[] correctDetails = new String[4];
+        boolean loginPass = false;
         try {
             FileInputStream fin = openFileInput("users.txt");
             int c;              //c is an ASCII number.
@@ -75,34 +85,34 @@ public class LoginRegister extends Activity {
 
                 if ((lineSplit[n].equals(username)) && (lineSplit[n + 1].equals(password))) {
                     //correct username and password
-                    Toast toast = Toast.makeText(LoginRegister.this,"Username and password correct!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(LoginRegister.this, "Username and password correct!", Toast.LENGTH_SHORT);
                     toast.show();
-                    correctDetails = true;
+                    correctDetails[0] = lineSplit[n];
+                    correctDetails[1] = lineSplit[n + 1];
+                    correctDetails[2] = lineSplit[n + 2];
+                    loginPass = true;
                     break;
 
                 } else if ((lineSplit[n].equals(username)) && (!(lineSplit[n + 1].equals(password)))) {
                     //correct username, incorrect password
-                    Toast toast = Toast.makeText(LoginRegister.this,"Password not recognised!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(LoginRegister.this, "Password not recognised!", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
 
-                } else if (n == lineSplit.length-1) {
-                    Toast toast = Toast.makeText(LoginRegister.this,"Username not recognised!", Toast.LENGTH_SHORT);
+                } else if (n == lineSplit.length - 1) {
+                    Toast toast = Toast.makeText(LoginRegister.this, "Username not recognised!", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
-                }
-
-                else {
+                } else {
                     n++;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if (correctDetails == true) {
-            returnLogin = true;
+        if (loginPass == true) {
+            correctDetails[3] = "True";
         }
-        return returnLogin;
+        return correctDetails;
     }
 }
