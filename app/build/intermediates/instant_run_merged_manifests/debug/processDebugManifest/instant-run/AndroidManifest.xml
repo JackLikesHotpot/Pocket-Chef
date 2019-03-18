@@ -23,8 +23,6 @@
             android:label="SearchRecipe" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -44,6 +42,22 @@
         <activity
             android:name="group22.seproject.LoginRegister"
             android:label="login and register" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="group22.seproject.writerFile"
+            android:label="test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="group22.seproject.Register"
+            android:label="registerAccount" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

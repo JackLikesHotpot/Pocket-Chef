@@ -11,6 +11,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".addRecipeForm"></activity>
         <activity
+            android:name=".AddRecipe"
+            android:label="@string/title_activity_add_recipe"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".add_recipe"
+            android:label="@string/title_activity_add_recipe"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".SearchActivity"
             android:label="SearchRecipe">
             <intent-filter>
