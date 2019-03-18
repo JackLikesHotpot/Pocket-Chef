@@ -54,7 +54,7 @@ public class SearchActivity extends Activity {
                     toast.show();
                 }
                 else {
-                    Intent addPage = new Intent(SearchActivity.this, addRecipeForm.class);
+                    Intent addPage = new Intent(SearchActivity.this, AddRecipe.class);
                     startActivity(addPage);
                 }
 
