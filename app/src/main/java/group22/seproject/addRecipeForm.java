@@ -12,6 +12,6 @@ public class addRecipeForm extends AppCompatActivity {
         setContentView(R.layout.add_recipe_form);
 
         EditText recipeName = findViewById(R.id.recipeName);
-        
+
     }
 }
