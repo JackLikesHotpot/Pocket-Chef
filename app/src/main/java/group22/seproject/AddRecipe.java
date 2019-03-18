@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class AddRecipe extends AppCompatActivity {
 
     EditText recipeNameET;
     EditText descriptionET;
-    TextView ingredientNameTV;
+    EditText ingredientNameET;
 
     ListView ingredientListLV;
     ArrayList<String> items = new ArrayList<String>();
@@ -40,7 +41,7 @@ public class AddRecipe extends AppCompatActivity {
 
         recipeNameET = findViewById(R.id.recipeNameET);
         descriptionET = findViewById(R.id.descriptionET);
-        ingredientNameTV = findViewById(R.id.ingredientNameTV);
+        ingredientNameET = findViewById(R.id.ingredientNameET);
         ingredientListLV = findViewById(R.id.ingredientListLV);
         addIngredientBTN = findViewById(R.id.addIngredientBTN);
         addRecipeBTN = findViewById(R.id.addRecipeBTN);
@@ -55,7 +56,7 @@ public class AddRecipe extends AppCompatActivity {
 
         addIngredientBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ingredientName = ingredientNameTV.toString();
+                ingredientName = ingredientNameET.getText().toString();
                 items.add(ingredientName);
                 Ingredient ingredient = new Ingredient(ingredientName, 6); // example calorie
                 ingredients.add(ingredient);
@@ -66,11 +67,21 @@ public class AddRecipe extends AppCompatActivity {
 
         addRecipeBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                recipeName = recipeNameET.getText().toString();
-                description.add(descriptionET.getText().toString());
-                Recipe recipe = new Recipe(recipeName, ingredients, description, 5, 5 ); // example toalCal and duration
-                RecipeBook.getInstance().addRecipeEntry(recipe);
-                //TODO: add Recipe to User
+
+                if ((recipeName.isEmpty() || items.isEmpty()) || description.isEmpty()) {
+                    Toast toast = Toast.makeText(AddRecipe.this, "Fields cannot be empty!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else {
+                    recipeName = recipeNameET.getText().toString();
+                    description.add(descriptionET.getText().toString());
+                    Recipe recipe = new Recipe(recipeName, ingredients, description, 5, 5); // example toalCal and duration
+                    RecipeBook.getInstance().addRecipeEntry(recipe);
+                    Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
+                    Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
+                    startActivity(goBack);
+                    //TODO: add Recipe to User
+                }
             }
         });
 
