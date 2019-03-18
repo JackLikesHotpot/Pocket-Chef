@@ -4,4 +4,5 @@
     <string name="search_for_recipe_or_ingredient_name">Search for recipe or ingredient name</string>
     <string name="search_name">Search by Name</string>
     <string name="search_ingredient">Search by Ingredient</string>
+    <string name="title_activity_add_recipe">add_recipe</string>
 </resources>
