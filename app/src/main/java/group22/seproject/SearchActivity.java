@@ -54,11 +54,10 @@ public class SearchActivity extends Activity {
                     toast.show();
                 }
                 else {
-                    System.out.println("YATEET");
+                    Intent addPage = new Intent(SearchActivity.this, addRecipeForm.class);
+                    startActivity(addPage);
                 }
-                    //Intent addPage = new Intent(SearchActivity.this, addForm.class);
-                    //startActivity(addPage);
-                    //make the form page
+
             }
         });
     }
