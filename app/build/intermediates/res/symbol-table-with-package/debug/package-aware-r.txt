@@ -1026,14 +1026,9 @@ drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
-id AddButton
-id AddIngredientButton
-id AddIngredientText
 id CTRL
 id FUNCTION
-id ListView_Add_Ingredient
 id META
-id RecipeNamebox
 id SHIFT
 id SYM
 id StepsTextView
@@ -1057,7 +1052,9 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addIngredientBTN
 id addRecipe
+id addRecipeBTN
 id alertTitle
 id all
 id always
@@ -1089,6 +1086,7 @@ id custom
 id customPanel
 id decor_content_parent
 id default_activity_button
+id descriptionET
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1098,7 +1096,6 @@ id details
 id dimensions
 id direct
 id disableHome
-id editText3
 id edit_query
 id end
 id enterAlways
@@ -1128,6 +1125,8 @@ id icon_group
 id ifRoom
 id image
 id info
+id ingredientListLV
+id ingredientNameET
 id ingredients
 id instructions
 id invisible
@@ -1166,6 +1165,7 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id recipeNameET
 id recipename
 id results_list
 id right

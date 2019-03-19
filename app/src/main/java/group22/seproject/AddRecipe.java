@@ -61,6 +61,7 @@ public class AddRecipe extends AppCompatActivity {
                 Ingredient ingredient = new Ingredient(ingredientName, 6); // example calorie
                 ingredients.add(ingredient);
                 adapter.notifyDataSetChanged();
+                ingredientNameET.setText("");
 
             }
         });
@@ -78,6 +79,7 @@ public class AddRecipe extends AppCompatActivity {
                     Recipe recipe = new Recipe(recipeName, ingredients, description, 5, 5); // example toalCal and duration
                     RecipeBook.getInstance().addRecipeEntry(recipe);
                     Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
+                    toast.show();
                     Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
                     startActivity(goBack);
                     //TODO: add Recipe to User
