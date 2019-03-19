@@ -1058,12 +1058,11 @@ id addRecipeBTN
 id alertTitle
 id all
 id always
+id appName
 id async
 id auto
 id bLogin
 id bRegister
-id b_read
-id b_write
 id barrier
 id beginning
 id blocking
@@ -1104,7 +1103,6 @@ id etCPassword
 id etEmail
 id etPassword
 id etUsername
-id et_text
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1140,6 +1138,8 @@ id line3
 id linearLayout
 id listMode
 id list_item
+id listingredients
+id listinstructions
 id masked
 id message
 id middle
@@ -1165,12 +1165,18 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id ratingBar
+id rcalories
+id rduration
+id recipeName
 id recipeNameET
 id recipename
 id results_list
 id right
 id right_icon
 id right_side
+id ringredients
+id rname
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1214,9 +1220,11 @@ id src_in
 id src_over
 id standard
 id start
+id startButton
 id stretch
 id submenuarrow
 id submit_area
+id submit_button
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1227,6 +1235,8 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView5
+id textView6
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1245,7 +1255,6 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tvRegisterLink
 id tvUnregisteredUser
-id tv_text
 id uniform
 id unlabeled
 id up
@@ -1274,7 +1283,6 @@ interpolator mtrl_fast_out_linear_in
 interpolator mtrl_fast_out_slow_in
 interpolator mtrl_linear
 interpolator mtrl_linear_out_slow_in
-layout a_test
 layout abc_action_bar_title_item
 layout abc_action_bar_up_container
 layout abc_action_menu_item_layout
@@ -1307,6 +1315,7 @@ layout activity_addrecipe
 layout activity_login
 layout activity_register
 layout activity_search
+layout add_recipe_form
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1321,6 +1330,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout front_page
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1329,6 +1339,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout recipe_front_page
 layout recipe_page
 layout results_textview
 layout search_results

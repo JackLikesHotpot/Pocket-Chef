@@ -35,9 +35,8 @@ public class LoginRegister extends Activity {
             public void onClick(View v) {
                 username = usernameInput.getText().toString();
                 password = passwordInput.getText().toString();
-                String[] userDetails = new String[3];
                 try {
-                    userDetails = loginCheck(username, password);
+                    String[] userDetails = loginCheck(username, password);
                     if (userDetails[3] == "True") {
                         Toast toast = Toast.makeText(LoginRegister.this, "Success! Redirecting to search page...", Toast.LENGTH_SHORT);
                         toast.show();

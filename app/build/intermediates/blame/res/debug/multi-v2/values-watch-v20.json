@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/billy/Desktop/QMUL/Year2/Software Engineering Project/Implementation/aaa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "C:\\Users\\Youssef\\Desktop\\aaa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/billy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/dd3e3bb1f887819c68899eb980f2fa3f/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "C:\\Users\\Youssef\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\3185bbee25a5c166646a50eb0def4b83\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
