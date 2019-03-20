@@ -17,6 +17,7 @@ public class AddRecipe extends AppCompatActivity {
     String recipeName;
     String ingredientName;
     ArrayList<String> description = new ArrayList<String>();
+    ArrayList<Review> reviews = new ArrayList<Review>();
     //TODO: INCLUDE CALORIES AND DURATION PARAMETERS TO ADD TO RECIPE OBJECT
 
     EditText recipeNameET;
@@ -74,15 +75,27 @@ public class AddRecipe extends AppCompatActivity {
                     toast.show();
                 }
                 else {
+
                     recipeName = recipeNameET.getText().toString();
                     description.add(descriptionET.getText().toString());
                     Recipe recipe = new Recipe(recipeName, ingredients, description, 5, 5); // example toalCal and duration
-                    RecipeBook.getInstance().addRecipeEntry(recipe);
-                    Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
-                    toast.show();
-                    Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
-                    startActivity(goBack);
-                    //TODO: add Recipe to User
+
+                    // TODO: ADMIN MUST VERIFY THE RECIPE BEFORE IT CAN BE CREATED
+                    if(admin.approveRecipe(recipe)) {
+                        registeredUser.addRecipe();
+                        RecipeBook.getInstance().addRecipeEntry(recipe);
+                        Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
+                        startActivity(goBack);
+                        //TODO: add Recipe to User
+                    }
+                    else {
+                        //NOTIFY THAT RECIPE WAS REJECTED
+                    }
+
+
+
                 }
             }
         });

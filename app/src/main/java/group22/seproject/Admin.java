@@ -12,6 +12,7 @@ public class Admin extends RegisteredUser {
     }
 
     public boolean approveRecipe(Recipe recipe) {
+
         return true;
     }
 }
