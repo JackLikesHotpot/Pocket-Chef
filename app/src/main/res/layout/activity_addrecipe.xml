@@ -50,13 +50,22 @@
 
         <EditText
             android:id="@+id/ingredientNameET"
-            android:layout_width="wrap_content"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingredient Name"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="54dp" />
+
+        <EditText
+            android:id="@+id/ingredientCaloriesET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Calories" />
 
         <Button
             android:id="@+id/addIngredientBTN"
@@ -66,22 +75,32 @@
             android:text="Add Ingredient" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/ingredientListLV"
-        android:layout_width="354dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="386dp"
+        android:layout_height="187dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.294">
+
+        <ListView
+            android:id="@+id/ingredientListLV"
+            android:layout_width="176dp"
+            android:layout_height="match_parent" />
+
+        <ListView
+            android:id="@+id/ingredientCaloriesLV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/descriptionET"
@@ -89,14 +108,14 @@
         android:layout_height="236dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientListLV" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
         android:id="@+id/StepsTextView"
@@ -104,14 +123,31 @@
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Description:"
+        android:text="Instructions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientListLV" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/recipeDurationET"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="textPersonName|textPostalAddress"
+        android:text="Duration (in minutes)"
+        app:layout_constraintEnd_toStartOf="@+id/addRecipeBTN"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionET" />
 
 
 </android.support.constraint.ConstraintLayout>
