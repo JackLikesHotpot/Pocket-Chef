@@ -66,15 +66,7 @@ public class AddRecipe extends AppCompatActivity {
         adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, calorieItems);
         ingredientCaloriesLV.setAdapter(adapter2);
 
-
         addRecipeBTN = findViewById(R.id.addRecipeBTN);
-
-
-
-
-
-
-
         addIngredientBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(ingredientNameET.getText().equals("") || ingredientCaloriesET.getText().equals("")) {

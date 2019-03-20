@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="316dp"
+        android:layout_height="27dp"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <Button
+        android:id="@+id/verifyRecipe"
+        android:layout_width="316dp"
+        android:layout_height="49dp"
+        android:text="Verify Pending Recipes"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="95dp" />
+</android.support.constraint.ConstraintLayout>
