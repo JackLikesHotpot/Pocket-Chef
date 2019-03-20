@@ -12,6 +12,7 @@ public class RecipeBook extends Activity {
     private static RecipeBook instance = null;
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     private ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
+    //private ArrayList<Recipe> pendingList = new ArrayList<Recipe>();
 
     private RecipeBook() {
 

@@ -22,7 +22,8 @@ public class SearchActivity extends Activity {
         final AutoCompleteTextView resultsBox = findViewById(R.id.search_box);
         Button nameSearch = findViewById(R.id.searchName);
         Button ingredientSearch = findViewById(R.id.searchIngredient);
-        final Button addRecipe = findViewById(R.id.addRecipe);
+        Button addRecipe = findViewById(R.id.addRecipe);
+        Button adminOpt = findViewById(R.id.adminOpt);
         String[] account = getIntent().getStringArrayExtra("account");
 
         if (account[2].equals("R")) {
@@ -63,6 +64,19 @@ public class SearchActivity extends Activity {
                     startActivity(addPage);
                 }
 
+            }
+        });
+
+        adminOpt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (user instanceof Admin) {
+                    Intent adminScreen = new Intent(SearchActivity.this, AdminOptions.class);
+                    startActivity(adminScreen);
+                }
+                else {
+                    Toast toast = Toast.makeText(SearchActivity.this,"User is not an Admin.",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
     }
