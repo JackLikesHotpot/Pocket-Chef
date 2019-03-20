@@ -70,10 +70,14 @@ public class AddRecipe extends AppCompatActivity {
         addRecipeBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if ((recipeName.isEmpty() || items.isEmpty()) || description.isEmpty()) {
+                if ((recipeNameET.getText().equals("") || adapter.getCount() == 0) || descriptionET.getText().equals("")) {
+
+
                     Toast toast = Toast.makeText(AddRecipe.this, "Fields cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
+
+
                 else {
 
                     recipeName = recipeNameET.getText().toString();
