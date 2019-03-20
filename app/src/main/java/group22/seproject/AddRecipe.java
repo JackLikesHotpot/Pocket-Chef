@@ -16,18 +16,29 @@ import java.util.ArrayList;
 public class AddRecipe extends AppCompatActivity {
     String recipeName;
     String ingredientName;
+    String calorieValue;
+    double duration;
+    double totalCalories = 0;
+
     ArrayList<String> description = new ArrayList<String>();
     ArrayList<Review> reviews = new ArrayList<Review>();
-    //TODO: INCLUDE CALORIES AND DURATION PARAMETERS TO ADD TO RECIPE OBJECT
 
     EditText recipeNameET;
     EditText descriptionET;
     EditText ingredientNameET;
+    EditText ingredientCaloriesET;
+    EditText recipeDurationET;
 
     ListView ingredientListLV;
     ArrayList<String> items = new ArrayList<String>();
     ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     ArrayAdapter<String> adapter;
+
+    ListView ingredientCaloriesLV;
+    ArrayList<String> calorieItems = new ArrayList<String>();
+    ArrayAdapter<String> adapter2;
+
+
 
     Button addIngredientBTN;
     Button addRecipeBTN;
@@ -43,11 +54,20 @@ public class AddRecipe extends AppCompatActivity {
         recipeNameET = findViewById(R.id.recipeNameET);
         descriptionET = findViewById(R.id.descriptionET);
         ingredientNameET = findViewById(R.id.ingredientNameET);
-        ingredientListLV = findViewById(R.id.ingredientListLV);
+        ingredientCaloriesET = findViewById(R.id.ingredientCaloriesET);
         addIngredientBTN = findViewById(R.id.addIngredientBTN);
-        addRecipeBTN = findViewById(R.id.addRecipeBTN);
+        recipeDurationET = findViewById(R.id.recipeDurationET);
+
+        ingredientListLV = findViewById(R.id.ingredientListLV);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         ingredientListLV.setAdapter(adapter);
+
+        ingredientCaloriesLV = findViewById(R.id.ingredientCaloriesLV);
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, calorieItems);
+        ingredientCaloriesLV.setAdapter(adapter2);
+
+
+        addRecipeBTN = findViewById(R.id.addRecipeBTN);
 
 
 
@@ -57,12 +77,27 @@ public class AddRecipe extends AppCompatActivity {
 
         addIngredientBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ingredientName = ingredientNameET.getText().toString();
-                items.add(ingredientName);
-                Ingredient ingredient = new Ingredient(ingredientName, 6); // example calorie
-                ingredients.add(ingredient);
-                adapter.notifyDataSetChanged();
-                ingredientNameET.setText("");
+                if(ingredientNameET.getText().equals("") || ingredientCaloriesET.getText().equals("")) {
+                    Toast warning = Toast.makeText(AddRecipe.this, "Ingredient Name and Calories fields must both be filled", Toast.LENGTH_SHORT);
+                    warning.show();
+                }
+
+                else {
+                    ingredientName = ingredientNameET.getText().toString();
+                    items.add(ingredientName);
+
+                    calorieValue = ingredientCaloriesET.getText().toString();
+                    calorieItems.add(calorieValue);
+
+                    Ingredient ingredient = new Ingredient(ingredientName, Double.parseDouble(calorieValue)); // example calorie
+                    ingredients.add(ingredient);
+                    totalCalories += Double.parseDouble(calorieValue);
+
+                    adapter.notifyDataSetChanged();
+                    adapter2.notifyDataSetChanged();
+                    ingredientNameET.setText("");
+                    ingredientCaloriesET.setText("");
+                }
 
             }
         });
@@ -71,32 +106,31 @@ public class AddRecipe extends AppCompatActivity {
             public void onClick(View v) {
 
                 if ((recipeNameET.getText().equals("") || adapter.getCount() == 0) || descriptionET.getText().equals("")) {
-
-
                     Toast toast = Toast.makeText(AddRecipe.this, "Fields cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
-
                 else {
 
                     recipeName = recipeNameET.getText().toString();
+                    duration = Double.parseDouble(descriptionET.getText().toString());
+
                     description.add(descriptionET.getText().toString());
-                    Recipe recipe = new Recipe(recipeName, ingredients, description, 5, 5); // example toalCal and duration
+                    Recipe recipe = new Recipe(recipeName, ingredients, description, totalCalories, duration);
 
                     // TODO: ADMIN MUST VERIFY THE RECIPE BEFORE IT CAN BE CREATED
-                    if(admin.approveRecipe(recipe)) {
-                        registeredUser.addRecipe();
+                   // if(admin.approveRecipe(recipe)) {
+                       // registeredUser.addRecipe();
                         RecipeBook.getInstance().addRecipeEntry(recipe);
                         Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
                         toast.show();
                         Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
                         startActivity(goBack);
                         //TODO: add Recipe to User
-                    }
-                    else {
+                   // }
+                   // else {
                         //NOTIFY THAT RECIPE WAS REJECTED
-                    }
+                  //  }
 
 
 

@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Calories" />
+            android:hint="Calories"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/addIngredientBTN"
@@ -142,8 +142,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
+        android:hint="Duration (in minutes)"
         android:inputType="textPersonName|textPostalAddress"
-        android:text="Duration (in minutes)"
         app:layout_constraintEnd_toStartOf="@+id/addRecipeBTN"
         app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
