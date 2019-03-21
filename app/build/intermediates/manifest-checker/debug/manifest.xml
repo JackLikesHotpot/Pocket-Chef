@@ -19,6 +19,10 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="group22.seproject.AddRecipe"
+            android:label="@string/title_activity_add_recipe"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="group22.seproject.SearchActivity"
             android:label="SearchRecipe" >
             <intent-filter>

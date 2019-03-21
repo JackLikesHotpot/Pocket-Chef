@@ -21,11 +21,9 @@ public class RegisteredUser extends User {
     }
 
     public boolean addRecipe(String recipeName, ArrayList<Ingredient> ingredients, ArrayList<String> instructions, double totalcalories, double duration) throws Exception {
-        //Recipe recipe = new Recipe(recipeName, ingredients, instructions, totalcalories, duration);
-
-        //RecipeBook.getInstance().addRecipeEntry(recipe);
-
-
+        Recipe recipe = new Recipe(recipeName, ingredients, instructions, totalcalories, duration);
+        ownedRecipes.add(recipe);
+        RecipeBook.getInstance().addRecipeEntry(recipe);
 
         //TODO: CODE THAT WILL LOOP THROUGH ADDED INGREDIENTS TO SEE IF ANY ARE NEW TO SYSTEM. IF SO, ADDS INGREDIENT TO RECIPEBOOK.
 

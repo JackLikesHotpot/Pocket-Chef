@@ -1138,8 +1138,6 @@ id line3
 id linearLayout
 id listMode
 id list_item
-id listingredients
-id listinstructions
 id masked
 id message
 id middle
@@ -1165,9 +1163,6 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
-id ratingBar
-id rcalories
-id rduration
 id recipeName
 id recipeNameET
 id recipename
@@ -1175,8 +1170,6 @@ id results_list
 id right
 id right_icon
 id right_side
-id ringredients
-id rname
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1224,7 +1217,6 @@ id startButton
 id stretch
 id submenuarrow
 id submit_area
-id submit_button
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1235,8 +1227,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
-id textView5
-id textView6
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1339,7 +1329,6 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout recipe_front_page
 layout recipe_page
 layout results_textview
 layout search_results
