@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,7 +12,10 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-public class recipePage extends Activity  implements DialogClass.DialogClassListener {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class recipePage extends Activity  {
 
     TextView txtname;
     TextView txtduration;
@@ -24,30 +28,36 @@ public class recipePage extends Activity  implements DialogClass.DialogClassList
     TextView showrev;
 
 
-    String recipename;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Recipe recipe1 = new Recipe ("pasta")
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        ArrayList<Ingredient> ingred1 = new ArrayList<>();
+        ingred1.add(new Ingredient("pasta",50));
+        ingred1.add(new Ingredient("tomato", 20));
+        ArrayList<String> instruc1 = new ArrayList<>();
+        instruc1.add("boil the water");
+        instruc1.add("add pasta");
+        final Recipe recipe1 = new Recipe ("Beef stroganoff", ingred1, instruc1, 80, 60);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_front_page);
         txtname = (TextView) findViewById(R.id.rname);
-        txtname.setText(Recipe.getName());
+        txtname.setText(recipe1.getName());
 
 
         txtduration = (TextView) findViewById(R.id.rduration);
-        txtduration.setText("Duration: " + getDuration());
+        txtduration.setText("Duration: " + recipe1.getDuration());
 
 
         txtcalories = (TextView) findViewById(R.id.rcalories);
-        txtcalories.setText("Total Calories: " + getTotalcalories());
+        txtcalories.setText("Total Calories: " + recipe1.getTotalcalories());
 
 
         ingred = (ListView) findViewById(R.id.listingredients);
-        ArrayAdapter adapter = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, getIngredients());
+        ArrayAdapter adapter = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, recipe1.getIngredients());
         ingred.setAdapter(adapter);
 
         instruc = (ListView) findViewById(R.id.listinstructions);
-        ArrayAdapter adapter1 = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, getInstructions());
+        ArrayAdapter adapter1 = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, recipe1.getInstructions());
         instruc.setAdapter(adapter1);
 
 
@@ -57,25 +67,29 @@ public class recipePage extends Activity  implements DialogClass.DialogClassList
             @Override
             public void onClick(View v) {
 
-                setTotalRating(stars.getRating());
-                setTotalVotes();
+                recipe1.setTotalRating(stars.getRating());
+                recipe1.setTotalVotes();
 
-                openDialog();
+                Intent intent = new Intent(v.getContext(),WriteReview.class);
+                startActivityForResult(intent,0);
             }
         });
 
         average  = (TextView) findViewById(R.id.avgRating);
-        if (getTotalVotes()==0) {
+        if (recipe1.getTotalVotes()==0) {
             average.setText("This recipe has no ratings");
         }
 
         else {
-            average.setText("Average Rating: " + (getTotalRating()/getTotalVotes()));
+            average.setText("Average Rating: " + (recipe1.getTotalRating()/recipe1.getTotalVotes()));
         }
 
         showrev = (TextView) findViewById(R.id.showReviews);
     }
 
+
+
+    /*
 
     public void openDialog(){
 
@@ -86,8 +100,10 @@ public class recipePage extends Activity  implements DialogClass.DialogClassList
 
     @Override
     public void applyTexts(String reviews) {
-        setReviews(reviews);
-        ArrayAdapter adapter2 = new ArrayAdapter(Recipe.this, android.R.layout.activity_list_item, getReviews());
+        recipe1.setReviews(reviews);
+        ArrayAdapter adapter2 = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, getReviews());
         instruc.setAdapter(adapter2);
     }
+    */
+
 }
