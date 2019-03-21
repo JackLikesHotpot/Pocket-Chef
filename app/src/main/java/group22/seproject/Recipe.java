@@ -1,6 +1,5 @@
 package group22.seproject;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,7 +21,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class Recipe extends Activity implements DialogClass.DialogClassListener {
+public class Recipe extends AppCompatActivity implements DialogClass.DialogClassListener {
 
     TextView txtname;
     TextView txtduration;
