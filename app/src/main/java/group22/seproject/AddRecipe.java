@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -69,7 +68,7 @@ public class AddRecipe extends Activity {
         addRecipeBTN = findViewById(R.id.addRecipeBTN);
         addIngredientBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(ingredientNameET.getText().equals("") || ingredientCaloriesET.getText().equals("")) {
+                if(ingredientNameET.length() == 0 || ingredientCaloriesET.length() == 0) {
                     Toast warning = Toast.makeText(AddRecipe.this, "Ingredient Name and Calories fields must both be filled", Toast.LENGTH_SHORT);
                     warning.show();
                 }
@@ -97,7 +96,7 @@ public class AddRecipe extends Activity {
         addRecipeBTN.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if ((recipeNameET.getText().equals("") || adapter.getCount() == 0) || descriptionET.getText().equals("")) {
+                if ((recipeNameET.length() == 0 || adapter.getCount() == 0) || (descriptionET.length() == 0 || recipeDurationET.length() == 0)) {
                     Toast toast = Toast.makeText(AddRecipe.this, "Fields cannot be empty!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
@@ -106,26 +105,25 @@ public class AddRecipe extends Activity {
 
                     recipeName = recipeNameET.getText().toString();
                     duration = Double.parseDouble(descriptionET.getText().toString());
-
                     description.add(descriptionET.getText().toString());
+
                     Recipe recipe = new Recipe(recipeName, ingredients, description, totalCalories, duration);
+                    RecipeBook.getInstance().getPendingRecipes().add(recipe);
 
-                    // TODO: ADMIN MUST VERIFY THE RECIPE BEFORE IT CAN BE CREATED
-                   // if(admin.approveRecipe(recipe)) {
-                       // registeredUser.addRecipe();
-                        RecipeBook.getInstance().addRecipeEntry(recipe);
-                        Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully.", Toast.LENGTH_SHORT);
-                        toast.show();
-                        Intent goBack = new Intent(AddRecipe.this, SearchActivity.class);
-                        startActivity(goBack);
+                    Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully. Awaiting verification.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    try {
+                        Thread.sleep(500);
+                    }
+                    catch(InterruptedException e) {}
+
+                    Intent login = new Intent(AddRecipe.this, LoginRegister.class);
+                    startActivity(login);
+
+                    //RecipeBook.getInstance().addRecipeEntry(recipe);
+
+
                         //TODO: add Recipe to User
-                   // }
-                   // else {
-                        //NOTIFY THAT RECIPE WAS REJECTED
-                  //  }
-
-
-
                 }
             }
         });

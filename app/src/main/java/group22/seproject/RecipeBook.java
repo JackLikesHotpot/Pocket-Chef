@@ -12,6 +12,7 @@ public class RecipeBook extends Activity {
     private static RecipeBook instance = null;
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     private ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
+    private ArrayList<Recipe> pendingRecipes = new ArrayList<Recipe>();
 
     private RecipeBook() {
 
@@ -138,7 +139,9 @@ public class RecipeBook extends Activity {
 
 
 
-
+    public ArrayList<Recipe> getPendingRecipes() {
+        return pendingRecipes;
+    }
 
 
 

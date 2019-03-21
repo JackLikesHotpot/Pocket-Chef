@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".addRecipeForm"
+            android:name=".AddRecipe"
             android:label="@string/title_activity_add_recipe"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

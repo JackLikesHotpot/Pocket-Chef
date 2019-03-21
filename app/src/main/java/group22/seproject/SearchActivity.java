@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.io.File;
 
@@ -20,6 +21,7 @@ public class SearchActivity extends Activity {
         Button ingredientSearch = findViewById(R.id.searchIngredient);
         final Button addRecipe = findViewById(R.id.addRecipe);
         String[] account = getIntent().getStringArrayExtra("account");
+        final Button AdminOpt = findViewById(R.id.AdminOpt);
 
         if (account[2].equals("R")) {
             user = new RegisteredUser(account[0], account[1], "@");
@@ -49,14 +51,29 @@ public class SearchActivity extends Activity {
 
         addRecipe.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println(user.getClass());
-                if (user instanceof UnregisteredUser ) {
+               // System.out.println(user.getClass());
+                if (user instanceof UnregisteredUser) {
                     Toast toast = Toast.makeText(SearchActivity.this, "Unregistered users cannot add recipes!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
                 else {
                     Intent addPage = new Intent(SearchActivity.this, AddRecipe.class);
                     startActivity(addPage);
+                }
+
+            }
+        });
+
+        AdminOpt.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                if(user instanceof Admin) {
+                    Intent adminOptionsPage = new Intent(SearchActivity.this, AdminOptions.class);
+                    startActivity(adminOptionsPage);
+                }
+
+                else {
+                    Toast toast = Toast.makeText(SearchActivity.this, "Unauthorised access. Admin users only.", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
 
             }

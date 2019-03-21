@@ -65,10 +65,16 @@
         android:id="@+id/addRecipe"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/searchPage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="219dp"
-        android:layout_marginEnd="4dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginRight="79dp"
         android:text="Add Recipe" />
 
     <Button
