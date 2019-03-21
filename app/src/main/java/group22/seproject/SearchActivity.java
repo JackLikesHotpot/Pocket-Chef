@@ -1,12 +1,8 @@
 package group22.seproject;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -22,8 +18,7 @@ public class SearchActivity extends Activity {
         final AutoCompleteTextView resultsBox = findViewById(R.id.search_box);
         Button nameSearch = findViewById(R.id.searchName);
         Button ingredientSearch = findViewById(R.id.searchIngredient);
-        Button addRecipe = findViewById(R.id.addRecipe);
-        Button adminOpt = findViewById(R.id.adminOpt);
+        final Button addRecipe = findViewById(R.id.addRecipe);
         String[] account = getIntent().getStringArrayExtra("account");
 
         if (account[2].equals("R")) {
@@ -64,19 +59,6 @@ public class SearchActivity extends Activity {
                     startActivity(addPage);
                 }
 
-            }
-        });
-
-        adminOpt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (user instanceof Admin) {
-                    Intent adminScreen = new Intent(SearchActivity.this, AdminOptions.class);
-                    startActivity(adminScreen);
-                }
-                else {
-                    Toast toast = Toast.makeText(SearchActivity.this,"User is not an Admin.",Toast.LENGTH_SHORT);
-                    toast.show();
-                }
             }
         });
     }
