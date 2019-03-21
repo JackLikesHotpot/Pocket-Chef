@@ -2,6 +2,7 @@ package group22.seproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -83,6 +84,26 @@ public class verifyRecipe extends AppCompatActivity {
         rejectBtn = findViewById(R.id.rejectBtn);
         ///////////////////////////////////////
 
+
+        /// button handlers ///
+
+        acceptBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO: CODE TO ACCEPT RECIPE AND SEND USER TO THAT RECIPE'S PAGE
+
+            }
+
+
+        });
+
+        rejectBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO: CODE TO REJECT RECIPE AND MAKE USER EDIT THEIR RECIPE DETAILS
+
+            }
+
+
+        });
 
 
 

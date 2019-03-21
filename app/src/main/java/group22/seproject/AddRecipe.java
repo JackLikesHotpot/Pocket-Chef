@@ -104,7 +104,7 @@ public class AddRecipe extends Activity {
                 else {
 
                     recipeName = recipeNameET.getText().toString();
-                    duration = Double.parseDouble(descriptionET.getText().toString());
+                    duration = Double.parseDouble(recipeDurationET.getText().toString());
                     description.add(descriptionET.getText().toString());
 
                     Recipe recipe = new Recipe(recipeName, ingredients, description, totalCalories, duration);
@@ -112,10 +112,10 @@ public class AddRecipe extends Activity {
 
                     Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully. Awaiting verification.", Toast.LENGTH_SHORT);
                     toast.show();
-                    try {
+                   /* try {
                         Thread.sleep(500);
                     }
-                    catch(InterruptedException e) {}
+                    catch(InterruptedException e) {} */
 
                     Intent login = new Intent(AddRecipe.this, LoginRegister.class);
                     startActivity(login);

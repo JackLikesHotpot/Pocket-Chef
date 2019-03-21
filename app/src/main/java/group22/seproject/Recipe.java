@@ -119,7 +119,7 @@ public class Recipe extends Activity implements DialogClass.DialogClassListener 
     public void openDialog(){
 
         DialogClass popup = new DialogClass();
-        popup.show(getSupportFragmentManager(), "dialog");
+        //popup.show(getSupportFragmentManager(), "dialog");
 
     }
 
