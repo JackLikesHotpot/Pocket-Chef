@@ -11,8 +11,8 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 
 public class recipePage extends Activity  {
 
@@ -70,7 +70,15 @@ public class recipePage extends Activity  {
                 recipe1.setTotalVotes();
 
                 Intent intent = new Intent(v.getContext(),WriteReview.class);
-                startActivityForResult(intent,0);
+                startActivity(intent);
+
+
+                Intent i = getIntent();
+                String rev = i.getStringExtra("value");
+                if (rev != null){
+                    recipe1.setReviews(rev);
+                }
+
             }
         });
 
