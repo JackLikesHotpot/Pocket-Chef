@@ -1,5 +1,6 @@
 package group22.seproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -94,10 +95,14 @@ public class verifyRecipe extends AppCompatActivity {
 
         /// button handlers ///
 
-        acceptBtn.setOnClickListener(new View.OnClickListener() {
+        acceptBtn.setOnClickListener(new View.OnClickListener() { // approve Recipe and direct to the Recipe Page
             public void onClick(View v) {
-                // TODO: CODE TO ACCEPT RECIPE AND SEND USER TO THAT RECIPE'S PAGE
-
+                Recipe approvedRecipe = pendingRecipe;
+                RecipeBook.getInstance().addRecipeEntry(pendingRecipe); // commit Recipe to verified in RecipeBook
+                RecipeBook.getInstance().getPendingRecipes().remove(pendingRecipe); // remove Recipe from Pending
+                Intent toRecipePage = new Intent(verifyRecipe.this, recipePage.class);
+                toRecipePage.putExtra("recipeName", pendingRecipe.getName());
+                startActivity(toRecipePage);
             }
 
 
@@ -105,15 +110,12 @@ public class verifyRecipe extends AppCompatActivity {
 
         rejectBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO: CODE TO REJECT RECIPE AND MAKE USER EDIT THEIR RECIPE DETAILS
-
+                RecipeBook.getInstance().getPendingRecipes().remove(pendingRecipe); // remove Recipe from Pending
+                Intent toSearchPage = new Intent(verifyRecipe.this, SearchActivity.class);
+                startActivity(toSearchPage);
             }
 
 
         });
-
-
-
-
     }
 }
