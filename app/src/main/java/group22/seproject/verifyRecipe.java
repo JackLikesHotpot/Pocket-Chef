@@ -14,8 +14,8 @@ import java.util.List;
 public class verifyRecipe extends AppCompatActivity {
 
     Recipe pendingRecipe;
-    ArrayList<String> ingredientsString = new ArrayList<String>();
-    ArrayList<String> caloriesString = new ArrayList<String>();
+    ArrayList<String> ingredientsString;
+    ArrayList<String> caloriesString;
 
     TextView recipeNameTV;
     ListView ingreidentsLV;
@@ -25,8 +25,8 @@ public class verifyRecipe extends AppCompatActivity {
     TextView totalCalsTV;
     Button acceptBtn;
     Button rejectBtn;
-    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(verifyRecipe.this, android.R.layout.simple_list_item_1, ingredientsString);
-    final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(verifyRecipe.this, android.R.layout.simple_list_item_1, caloriesString);
+    ArrayAdapter<String> adapter;
+    ArrayAdapter<String> adapter2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,13 @@ public class verifyRecipe extends AppCompatActivity {
         ////////////////////////////////////////
 
         // initialise all components from the verify_recipe.xml file
+
+        ingredientsString = new ArrayList<String>();
+        caloriesString = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>(verifyRecipe.this, android.R.layout.simple_list_item_1, ingredientsString);
+        adapter2 = new ArrayAdapter<String>(verifyRecipe.this, android.R.layout.simple_list_item_1, caloriesString);
+
+
         recipeNameTV = findViewById(R.id.recipeNameTV);
         recipeNameTV.setText(pendingRecipe.getName());
 
