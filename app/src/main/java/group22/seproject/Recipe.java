@@ -22,7 +22,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class Recipe extends Activity implements DialogClass.DialogClassListener {
+public class Recipe {
 
     TextView txtname;
     TextView txtduration;
@@ -61,82 +61,7 @@ public class Recipe extends Activity implements DialogClass.DialogClassListener 
     }
 
 
-    /*
 
-      NEW
-     */
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_front_page);
-        txtname = (TextView) findViewById(R.id.rname);
-        txtname.setText(getName());
-
-
-        txtduration = (TextView) findViewById(R.id.rduration);
-        txtduration.setText("Duration: " + getDuration());
-
-
-        txtcalories = (TextView) findViewById(R.id.rcalories);
-        txtcalories.setText("Total Calories: " + getTotalcalories());
-
-
-        ingred = (ListView) findViewById(R.id.listingredients);
-        ArrayAdapter adapter = new ArrayAdapter(Recipe.this, android.R.layout.activity_list_item, getIngredients());
-        ingred.setAdapter(adapter);
-
-        instruc = (ListView) findViewById(R.id.listinstructions);
-        ArrayAdapter adapter1 = new ArrayAdapter(Recipe.this, android.R.layout.activity_list_item, getInstructions());
-        instruc.setAdapter(adapter1);
-
-
-        stars = (RatingBar) findViewById(R.id.ratingBar);
-        submitbutton = (Button) findViewById(R.id.submit_button);
-        submitbutton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-
-                setTotalRating(stars.getRating());
-                setTotalVotes();
-
-                openDialog();
-            }
-        });
-
-        average  = (TextView) findViewById(R.id.avgRating);
-        if (getTotalVotes()==0) {
-        average.setText("This recipe has no ratings");
-        }
-
-        else {
-            average.setText("Average Rating: " + (getTotalRating()/getTotalVotes()));
-        }
-
-        showrev = (TextView) findViewById(R.id.showReviews);
-    }
-
-
-    public void openDialog(){
-
-        DialogClass popup = new DialogClass();
-        //popup.show(getSupportFragmentManager(), "dialog");
-
-    }
-
-    @Override
-    public void applyTexts(String reviews) {
-        setReviews(reviews);
-        ArrayAdapter adapter2 = new ArrayAdapter(Recipe.this, android.R.layout.activity_list_item, getReviews());
-        instruc.setAdapter(adapter2);
-    }
-
-    /*
-    public static void main(String[] args) {
-        File f = new File(System.getProperty("user.dir") + "/app/sampledata/users.txt");
-        System.out.println(f.exists());
-        System.out.println("Current working directory: " + System.getProperty("user.dir"));
-    }
-*/
 
 
     public ArrayList<String> getInstructions() {

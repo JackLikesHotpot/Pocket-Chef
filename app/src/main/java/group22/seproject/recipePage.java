@@ -32,16 +32,6 @@ public class recipePage extends Activity  {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
-
-
-        //ArrayList<Ingredient> ingred1 = new ArrayList<>();
-        //ingred1.add(new Ingredient("pasta",50));
-        //ingred1.add(new Ingredient("tomato", 20));
-        //ArrayList<String> instruc1 = new ArrayList<>();
-        //instruc1.add("boil the water");
-        //instruc1.add("add pasta");
-        //final Recipe recipe1 = new Recipe ("Beef stroganoff", ingred1, instruc1, 80, 60);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_front_page);
 
@@ -63,19 +53,50 @@ public class recipePage extends Activity  {
 
 
         txtduration = (TextView) findViewById(R.id.rduration);
-        txtduration.setText("Duration: " + recipe.getDuration());
+        String durText = "Duration: " + Double.toString(recipe.getDuration());
+        txtduration.setText(durText);
 
 
         txtcalories = (TextView) findViewById(R.id.rcalories);
-        txtcalories.setText("Total Calories: " + recipe.getTotalcalories());
+        String calText = "Total Calories: " + Double.toString(recipe.getTotalcalories());
+        txtcalories.setText(calText);
+
+
+
+
+
+
+
+        //////////////////////// Display Ingedients in String format ////////////////////////
+
+        ArrayList<String> ingredientsString = new ArrayList<String>();
+        String ingredName;
+        String ingredCal;
+        Ingredient currentIng;
+        for(int j = 0; j < recipe.getIngredients().size(); j++) {
+            currentIng = recipe.getIngredients().get(j);
+            ingredName = currentIng.getName();
+            ingredCal = Double.toString(currentIng.getCalories());
+            ingredientsString.add(ingredName + ", " + ingredCal);
+        }
 
 
         ingred = (ListView) findViewById(R.id.listingredients);
-        ArrayAdapter adapter = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, recipe.getIngredients());
+        ArrayAdapter adapter = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, ingredientsString);
         ingred.setAdapter(adapter);
 
+
+
+        /////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
         instruc = (ListView) findViewById(R.id.listinstructions);
-        ArrayAdapter adapter1 = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, recipe.getInstructions());
+        ArrayAdapter adapter1 = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, recipe.getInstructions());
         instruc.setAdapter(adapter1);
 
 

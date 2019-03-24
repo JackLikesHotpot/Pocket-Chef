@@ -112,11 +112,6 @@ public class AddRecipe extends Activity {
 
                     Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully. Awaiting verification.", Toast.LENGTH_SHORT);
                     toast.show();
-                   /* try {
-                        Thread.sleep(500);
-                    }
-                    catch(InterruptedException e) {} */
-
                     Intent login = new Intent(AddRecipe.this, LoginRegister.class);
                     startActivity(login);
 
