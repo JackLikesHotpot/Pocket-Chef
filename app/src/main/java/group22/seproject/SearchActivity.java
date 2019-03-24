@@ -39,24 +39,24 @@ public class SearchActivity extends Activity {
 
         nameSearch.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String recipeName = resultsBox.getText().toString();
+                //String recipeName = resultsBox.getText().toString();
                 Intent resultsScreen;
-                for(int i = 0; i < recipeList.size(); i++) {
-                    if (recipeList.get(i).getName().equalsIgnoreCase(recipeName)) {
-                        resultsScreen = new Intent(SearchActivity.this, recipePage.class);
+              //  for(int i = 0; i < recipeList.size(); i++) {
+                  //  if (recipeList.get(i).getName().equalsIgnoreCase(recipeName)) {
+                        resultsScreen = new Intent(SearchActivity.this, SearchResults.class);
                         resultsScreen.putExtra("recipeName", resultsBox.getText().toString()); //information from box
                         startActivity(resultsScreen);
-                    }
-                    Toast notFound = Toast.makeText(SearchActivity.this, "Recipe by that name not found", Toast.LENGTH_SHORT);
-                    notFound.show();
-                }
+                  //  }
+                  //  Toast notFound = Toast.makeText(SearchActivity.this, "Recipe by that name not found", Toast.LENGTH_SHORT);
+                  //  notFound.show();
+               // }
             }
         });
 
         ingredientSearch.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Intent resultsScreen = new Intent(SearchActivity.this, SearchResults.class);
-                resultsScreen.putExtra("search", resultsBox.getText().toString());
+                resultsScreen.putExtra("ingredName", resultsBox.getText().toString());
                 startActivity(resultsScreen);
             }
         });
