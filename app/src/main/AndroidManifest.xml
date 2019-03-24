@@ -26,6 +26,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".WriteReview"
+            android:label="Review">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".SearchResults"
             android:label="results">
             <intent-filter>

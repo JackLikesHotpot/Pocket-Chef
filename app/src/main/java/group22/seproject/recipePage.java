@@ -26,6 +26,7 @@ public class recipePage extends Activity  {
     TextView average;
     TextView showrev;
 
+
     Recipe recipe;
 
 
@@ -35,9 +36,18 @@ public class recipePage extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_front_page);
 
+        ingred = (ListView) findViewById(R.id.listingredients);
+        ArrayList<Ingredient> ingred1 = new ArrayList<>();
+        ingred1.add(new Ingredient("pasta",50));
+        ingred1.add(new Ingredient("tomato", 20));
+        ArrayList<String> instruc1 = new ArrayList<>();
+        instruc1.add("boil the water");
+        instruc1.add("add pasta");
+        final Recipe recipe = new Recipe ("Beef stroganoff", ingred1, instruc1, 80, 60);
+
 
         //////////////////////// Recipe Fetch ////////////////////////
-        ArrayList<Recipe> approvedRecs = RecipeBook.getInstance().getRecipes();
+     /*   ArrayList<Recipe> approvedRecs = RecipeBook.getInstance().getRecipes();
         String recipeName = getIntent().getStringExtra("recipeName"); // get Recipe Name from Intent
 
         for(int i = 0; i < approvedRecs.size(); i++) { // fetch the Recipe from the RecipeBook
@@ -46,7 +56,7 @@ public class recipePage extends Activity  {
             }
         }
         //////////////////////////////////////////////////////////////
-
+    */
 
         txtname = (TextView) findViewById(R.id.rname);
         txtname.setText(recipe.getName());
@@ -56,6 +66,9 @@ public class recipePage extends Activity  {
         String durText = "Duration: " + Double.toString(recipe.getDuration());
         txtduration.setText(durText);
 
+
+        ArrayAdapter adapter3 = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, recipe.getIngredients());
+        ingred.setAdapter(adapter3);
 
         txtcalories = (TextView) findViewById(R.id.rcalories);
         String calText = "Total Calories: " + Double.toString(recipe.getTotalcalories());
@@ -106,7 +119,7 @@ public class recipePage extends Activity  {
             @Override
             public void onClick(View v) {
 
-                recipe.setTotalRating(stars.getRating());
+                recipe.setTotalRating((double)stars.getRating());
                 recipe.setTotalVotes();
 
                 Intent intent = new Intent(v.getContext(),WriteReview.class);
@@ -115,9 +128,9 @@ public class recipePage extends Activity  {
 
                 Intent i = getIntent();
                 String rev = i.getStringExtra("value");
-                if (rev != null){
+
                     recipe.setReviews(rev);
-                }
+
 
             }
         });
@@ -129,9 +142,15 @@ public class recipePage extends Activity  {
 
         else {
             average.setText("Average Rating: " + (recipe.getTotalRating()/recipe.getTotalVotes()));
+
         }
 
         showrev = (TextView) findViewById(R.id.showReviews);
+        if (recipe.getReviews().isEmpty()) {
+        }
+        else {
+            showrev.setText(recipe.getReviews().get(0));
+        }
     }
 
 

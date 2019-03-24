@@ -100,9 +100,7 @@ public class Recipe {
         return writtenrev;
     }
 
-    public void setTotalRating(float rating) {
-        totalRating += rating;
-    }
+    public void setTotalRating(double rating) { totalRating += rating; }
 
     public int getTotalVotes() {
         return totalVotes;
