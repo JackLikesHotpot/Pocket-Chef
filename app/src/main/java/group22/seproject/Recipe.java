@@ -20,9 +20,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Serializable {
 
     TextView txtname;
     TextView txtduration;
@@ -88,8 +89,10 @@ public class Recipe {
         return averageRating;
     }
 
-    public void setAverageRating(int rating) {
+    public void setAverageRating(double rating) {
+
         averageRating = totalRating / totalVotes;
+
     }
 
     public double getTotalRating() {
@@ -113,4 +116,6 @@ public class Recipe {
     public void setReviews (String revv) {
         writtenrev.add(revv);
     }
+
+
 }

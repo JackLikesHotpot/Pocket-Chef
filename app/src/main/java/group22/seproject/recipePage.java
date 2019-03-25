@@ -24,7 +24,7 @@ public class recipePage extends Activity  {
     RatingBar stars;
     Button submitbutton;
     TextView average;
-    TextView showrev;
+    ListView showrev;
 
 
     Recipe recipe;
@@ -35,28 +35,18 @@ public class recipePage extends Activity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_front_page);
+        //listenerForRating();
 
-        ingred = (ListView) findViewById(R.id.listingredients);
-        ArrayList<Ingredient> ingred1 = new ArrayList<>();
-        ingred1.add(new Ingredient("pasta",50));
-        ingred1.add(new Ingredient("tomato", 20));
-        ArrayList<String> instruc1 = new ArrayList<>();
-        instruc1.add("boil the water");
-        instruc1.add("add pasta");
-        final Recipe recipe = new Recipe ("Beef stroganoff", ingred1, instruc1, 80, 60);
+        ArrayList<Recipe> approvedRecs = RecipeBook.getInstance().getRecipes();
+            String recipeName = getIntent().getStringExtra("recipeName"); // get Recipe Name from Intent
 
-
-        //////////////////////// Recipe Fetch ////////////////////////
-     /*   ArrayList<Recipe> approvedRecs = RecipeBook.getInstance().getRecipes();
-        String recipeName = getIntent().getStringExtra("recipeName"); // get Recipe Name from Intent
-
-        for(int i = 0; i < approvedRecs.size(); i++) { // fetch the Recipe from the RecipeBook
-            if(approvedRecs.get(i).getName().equals(recipeName)) {
-                recipe = approvedRecs.get(i);
+            for (int i = 0; i < approvedRecs.size(); i++) { // fetch the Recipe from the RecipeBook
+                if (approvedRecs.get(i).getName().equals(recipeName)) {
+                    recipe = approvedRecs.get(i);
+                }
             }
-        }
-        //////////////////////////////////////////////////////////////
-    */
+
+
 
         txtname = (TextView) findViewById(R.id.rname);
         txtname.setText(recipe.getName());
@@ -67,17 +57,9 @@ public class recipePage extends Activity  {
         txtduration.setText(durText);
 
 
-        ArrayAdapter adapter3 = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, recipe.getIngredients());
-        ingred.setAdapter(adapter3);
-
         txtcalories = (TextView) findViewById(R.id.rcalories);
         String calText = "Total Calories: " + Double.toString(recipe.getTotalcalories());
         txtcalories.setText(calText);
-
-
-
-
-
 
 
         //////////////////////// Display Ingedients in String format ////////////////////////
@@ -95,17 +77,11 @@ public class recipePage extends Activity  {
 
 
         ingred = (ListView) findViewById(R.id.listingredients);
-        ArrayAdapter adapter = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, ingredientsString);
-        ingred.setAdapter(adapter);
-
+        ArrayAdapter adapter2 = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, ingredientsString);
+        ingred.setAdapter(adapter2);
 
 
         /////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
         instruc = (ListView) findViewById(R.id.listinstructions);
@@ -114,23 +90,18 @@ public class recipePage extends Activity  {
 
 
         stars = (RatingBar) findViewById(R.id.ratingBar);
+
         submitbutton = (Button) findViewById(R.id.submit_button);
         submitbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
-                recipe.setTotalRating((double)stars.getRating());
+                double aux = stars.getNumStars();
+                recipe.setTotalRating(aux);
                 recipe.setTotalVotes();
 
-                Intent intent = new Intent(v.getContext(),WriteReview.class);
-                startActivity(intent);
-
-
-                Intent i = getIntent();
-                String rev = i.getStringExtra("value");
-
-                    recipe.setReviews(rev);
-
+                Intent intent = new Intent(recipePage.this, WriteReview.class);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -139,37 +110,27 @@ public class recipePage extends Activity  {
         if (recipe.getTotalVotes()==0) {
             average.setText("This recipe has no ratings");
         }
-
         else {
             average.setText("Average Rating: " + (recipe.getTotalRating()/recipe.getTotalVotes()));
 
         }
 
-        showrev = (TextView) findViewById(R.id.showReviews);
-        if (recipe.getReviews().isEmpty()) {
-        }
-        else {
-            showrev.setText(recipe.getReviews().get(0));
-        }
-    }
-
-
-
-    /*
-
-    public void openDialog(){
-
-        DialogClass popup = new DialogClass();
-        popup.show(getSupportFragmentManager(), "dialog");
+        showrev = (ListView) findViewById(R.id.rewi);
+        ArrayAdapter adapter4 = new ArrayAdapter(recipePage.this, android.R.layout.simple_list_item_1, recipe.getReviews());
+        showrev.setAdapter(adapter4);
 
     }
+
 
     @Override
-    public void applyTexts(String reviews) {
-        recipe1.setReviews(reviews);
-        ArrayAdapter adapter2 = new ArrayAdapter(recipePage.this, android.R.layout.activity_list_item, getReviews());
-        instruc.setAdapter(adapter2);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String res = data.getStringExtra("result");
+                recipe.setReviews(res);
+            }
+        }
     }
-    */
+
 
 }

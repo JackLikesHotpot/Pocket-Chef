@@ -12,7 +12,7 @@ public class WriteReview extends Activity {
     private EditText writerev;
     private Button btn1;
     private Button btn2;
-    private String review = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +23,29 @@ public class WriteReview extends Activity {
         btn1 = (Button) findViewById(R.id.cancelbtn);
         btn2 = (Button)  findViewById(R.id.submitbtn);
 
-        review = writerev.getText().toString();
+        //final String review = writerev.getText().toString();
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), recipePage.class);
-                i.putExtra("value", review);
-                startActivity(i);
+
+                String review = writerev.getText().toString();
+
+                Intent resultIntent = new Intent();
+
+                resultIntent.putExtra("result", review);
+
+
+                setResult(RESULT_OK, resultIntent);
+                finish();
             }
         });
 
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent i2 = new Intent (v.getContext(), recipePage.class);
-                startActivity(i2);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
 
