@@ -23,7 +23,6 @@ public class WriteReview extends Activity {
         btn1 = (Button) findViewById(R.id.cancelbtn);
         btn2 = (Button)  findViewById(R.id.submitbtn);
 
-        //final String review = writerev.getText().toString();
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override

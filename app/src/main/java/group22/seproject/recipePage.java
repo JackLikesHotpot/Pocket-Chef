@@ -35,7 +35,7 @@ public class recipePage extends Activity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_front_page);
-        //listenerForRating();
+
 
         ArrayList<Recipe> approvedRecs = RecipeBook.getInstance().getRecipes();
             String recipeName = getIntent().getStringExtra("recipeName"); // get Recipe Name from Intent
@@ -89,15 +89,18 @@ public class recipePage extends Activity  {
         instruc.setAdapter(adapter1);
 
 
-        stars = (RatingBar) findViewById(R.id.ratingBar);
+
 
         submitbutton = (Button) findViewById(R.id.submit_button);
+
+        stars = (RatingBar) findViewById(R.id.ratingBar);
         submitbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
-                double aux = stars.getNumStars();
-                recipe.setTotalRating(aux);
+
+
+                recipe.setTotalRating(stars.getRating());
                 recipe.setTotalVotes();
 
                 Intent intent = new Intent(recipePage.this, WriteReview.class);
@@ -131,6 +134,7 @@ public class recipePage extends Activity  {
             }
         }
     }
+
 
 
 }
