@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+//WriteReview class - allows only registered users and admins to write reviews for a selected recipe.
+
 public class WriteReview extends Activity {
 
     private EditText writerev;

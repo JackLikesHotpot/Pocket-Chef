@@ -4,6 +4,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+//All users of the system are automatically given a User object to represent them:
+//Stores their saved recipes and reminders, allows them to search, as well as to create reminders.
+
 public abstract class User {
 
     private ArrayList<Recipe> savedRecipes = new ArrayList<Recipe>();

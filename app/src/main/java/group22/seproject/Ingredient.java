@@ -2,6 +2,8 @@ package group22.seproject;
 
 import java.util.ArrayList;
 
+//Relatively unused, could not find how to implement it efficiently and effectively.
+
 public class Ingredient {
     private String name;
     private double calories;

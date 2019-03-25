@@ -12,6 +12,9 @@ import android.widget.VideoView;
 import java.io.File;
 import java.util.ArrayList;
 
+//SearchActivity class would allow the user to search by name or ingredient.
+//Added extra functionalities to allow Admin to access a options page and allows registered users to add a recipe from this page
+
 public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

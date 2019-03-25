@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+//Front page for the application sets up the necessary storage files to run the app.
+
 public class frontPage extends Activity {
 
     @Override

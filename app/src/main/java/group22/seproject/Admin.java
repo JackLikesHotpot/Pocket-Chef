@@ -1,5 +1,7 @@
 package group22.seproject;
 
+//Admin user extends a RegisteredUser, can do everything a registered user do as well as additional tasks
+
 public class Admin extends RegisteredUser {
 
     public Admin(String userName, String password, String email){

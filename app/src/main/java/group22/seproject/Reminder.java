@@ -1,8 +1,9 @@
 package group22.seproject;
 
-import java.io.File;
 import java.sql.Time;
 import java.util.Calendar;
+
+//Unused. Reminder class would set a reminder to notify a user at a certain time and date.
 
 public class Reminder {
     private Calendar startDate;

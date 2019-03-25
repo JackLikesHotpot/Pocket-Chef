@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//AddRecipe class
+//Creates variables for a new recipe
+//User inputs details for their recipe and class methods check the parameters
+//If successful, adds the recipe to a pending list so that an Admin can verify the recipe.
+
 public class AddRecipe extends Activity {
     String recipeName;
     String ingredientName;
@@ -112,7 +117,7 @@ public class AddRecipe extends Activity {
 
                     Toast toast = Toast.makeText(AddRecipe.this, "Recipe uploaded successfully. Awaiting verification.", Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent login = new Intent(AddRecipe.this, LoginRegister.class);
+                    Intent login = new Intent(AddRecipe.this, Login.class);
                     startActivity(login);
 
                     //RecipeBook.getInstance().addRecipeEntry(recipe);

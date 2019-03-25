@@ -1,7 +1,6 @@
 package group22.seproject;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
-public class LoginRegister extends Activity {
+//Login class checks username/password against a stored file in system and checks if the details are accurate
+//Alternatively, users can register as a new registered user or login as an unregistered user.
+
+public class Login extends Activity {
     String username = "";
     String password = "";
 
@@ -38,9 +34,9 @@ public class LoginRegister extends Activity {
                 try {
                     String[] userDetails = loginCheck(username, password);
                     if (userDetails[3] == "True") {
-                        Toast toast = Toast.makeText(LoginRegister.this, "Success! Redirecting to search page...", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(Login.this, "Success! Redirecting to search page...", Toast.LENGTH_SHORT);
                         toast.show();
-                        Intent search = new Intent(LoginRegister.this, SearchActivity.class);
+                        Intent search = new Intent(Login.this, SearchActivity.class);
                         search.putExtra("account", userDetails);
                         startActivity(search);
                     }
@@ -51,7 +47,7 @@ public class LoginRegister extends Activity {
         });
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent register = new Intent(LoginRegister.this, Register.class);
+                Intent register = new Intent(Login.this, Register.class);
                 startActivity(register);
             }
         });
@@ -59,7 +55,7 @@ public class LoginRegister extends Activity {
         unregisterLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String[] userDetails = {"","","U","True"};
-                Intent search = new Intent(LoginRegister.this, SearchActivity.class);
+                Intent search = new Intent(Login.this, SearchActivity.class);
                 search.putExtra("account", userDetails);
                 startActivity(search);
             }
@@ -84,7 +80,7 @@ public class LoginRegister extends Activity {
 
                 if ((lineSplit[n].equals(username)) && (lineSplit[n + 1].equals(password))) {
                     //correct username and password
-                    Toast toast = Toast.makeText(LoginRegister.this, "Username and password correct!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(Login.this, "Username and password correct!", Toast.LENGTH_SHORT);
                     toast.show();
                     correctDetails[0] = lineSplit[n];
                     correctDetails[1] = lineSplit[n + 1];
@@ -94,12 +90,12 @@ public class LoginRegister extends Activity {
 
                 } else if ((lineSplit[n].equals(username)) && (!(lineSplit[n + 1].equals(password)))) {
                     //correct username, incorrect password
-                    Toast toast = Toast.makeText(LoginRegister.this, "Password not recognised!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(Login.this, "Password not recognised!", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
 
                 } else if (n == lineSplit.length - 1) {
-                    Toast toast = Toast.makeText(LoginRegister.this, "Username not recognised!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(Login.this, "Username not recognised!", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
                 } else {

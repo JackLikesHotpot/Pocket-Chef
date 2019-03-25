@@ -8,9 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//VerifyRecipe - required to allow admins to approve of pending recipes that users have entered.
 
 public class verifyRecipe extends AppCompatActivity {
 
@@ -102,6 +105,8 @@ public class verifyRecipe extends AppCompatActivity {
                 RecipeBook.getInstance().getPendingRecipes().remove(pendingRecipe); // remove Recipe from Pending
                 Intent toRecipePage = new Intent(verifyRecipe.this, recipePage.class);
                 toRecipePage.putExtra("recipeName", pendingRecipe.getName());
+                Toast toast = Toast.makeText(verifyRecipe.this, "Verified recipe!", Toast.LENGTH_SHORT);
+                toast.show();
                 startActivity(toRecipePage);
             }
 
@@ -112,6 +117,8 @@ public class verifyRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 RecipeBook.getInstance().getPendingRecipes().remove(pendingRecipe); // remove Recipe from Pending
                 Intent toSearchPage = new Intent(verifyRecipe.this, SearchActivity.class);
+                Toast toast = Toast.makeText(verifyRecipe.this, "Rejected recipe!", Toast.LENGTH_SHORT);
+                toast.show();
                 startActivity(toSearchPage);
             }
 

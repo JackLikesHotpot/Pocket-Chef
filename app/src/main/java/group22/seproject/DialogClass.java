@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+//Unused. Could not find how to implement it.
+//Class used to create a dialog box popup.
+
 public class DialogClass extends AppCompatDialogFragment  {
 
 

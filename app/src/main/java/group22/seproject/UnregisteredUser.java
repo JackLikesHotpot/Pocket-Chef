@@ -1,5 +1,7 @@
 package group22.seproject;
 
+//An UnregisteredUser can do everything a user can do with only one other method - creating a registered user account.
+
 public class UnregisteredUser extends User {
 
     public UnregisteredUser(){

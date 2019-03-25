@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//SearchResults class displays the results of the search entered.
+
 public class SearchResults extends Activity {
 
     ListView searchResultsLV;

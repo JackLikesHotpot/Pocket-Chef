@@ -1,41 +1,10 @@
 package group22.seproject;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe implements Serializable {
+//Recipe object used to store information about a specific entered recipe.
 
-    TextView txtname;
-    TextView txtduration;
-    TextView txtcalories;
-    ListView ingred;
-    ListView instruc;
-    RatingBar stars;
-    Button submitbutton;
-    TextView average;
-    TextView showrev;
-
-
+public class Recipe {
     private ArrayList<String> instructions = new ArrayList<String>();
     private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     private double totalcalories;
@@ -60,10 +29,6 @@ public class Recipe implements Serializable {
         this.totalVotes = 0;
         this.totalRating = 0;
     }
-
-
-
-
 
     public ArrayList<String> getInstructions() {
         return instructions;

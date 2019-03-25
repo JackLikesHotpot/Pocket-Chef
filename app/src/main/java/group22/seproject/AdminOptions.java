@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+//AdminOptions give a number of options available to an Admin. Currently only allows the Admin to verify recipes.
+
 public class AdminOptions extends Activity {
 
     ListView verifyRecipes;
@@ -30,7 +32,7 @@ public class AdminOptions extends Activity {
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AdminOptions.this, android.R.layout.simple_list_item_1, recipeName);
 
-        verifyRecipes.setAdapter(arrayAdapter);
+        verifyRecipes.setAdapter(arrayAdapter);     //display pending recipes
 
         verifyRecipes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

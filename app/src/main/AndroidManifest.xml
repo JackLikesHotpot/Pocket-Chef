@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginRegister"
+            android:name=".Login"
             android:label="login and register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

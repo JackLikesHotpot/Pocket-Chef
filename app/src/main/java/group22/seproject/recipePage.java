@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+//RecipePage class displays information about a chosen recipe.
 
 public class recipePage extends Activity  {
 

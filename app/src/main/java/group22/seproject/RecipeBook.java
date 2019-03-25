@@ -6,6 +6,8 @@ import android.content.res.AssetManager;
 import java.util.ArrayList;
 import java.io.*;
 
+//Singleton class, used to store recipes and ingredients in arraylists.
+//Used to keep a consistent storage.
 
 public class RecipeBook extends Activity {
 

@@ -2,6 +2,9 @@ package group22.seproject;
 
 import java.util.ArrayList;
 
+//RegisteredUser class - registered users can do everything a normal user can except additional functionalities in the system.
+//Can create recipes and reviews - methods were instead used elsewhere.
+
 public class RegisteredUser extends User {
     private String userName; //either make these variables public to access them from Admin class or add them in as attributes
     private String password;
